@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -58,5 +59,9 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector2.right * moveSpeed * moveInput.x * Time.deltaTime);
     }
 
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        SceneManager.LoadScene("PlayScene_" + collision.name);
+    }
 }
